@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user_id = auth()->user()->id;
+
+        //The missing link to my problem
+        $user = User::find($user_id);
+        return view('home')->with('posts', $user->posts);
     }
 }

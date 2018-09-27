@@ -1,9 +1,10 @@
 @extends('pages.layouts.app')
 
 @section('content')
-    <h1>Create Post</h1>
+    <h1>Create Album</h1>
     {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
-        <div class="form-group">
+       
+    <div class="form-group">
             {{Form::label('title', 'Title')}}
             {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
@@ -13,6 +14,7 @@
         </div>
         <div class="form-group">
             {{Form::file('cover_image')}}
+            {{-- <input type="file" name="file" multiple>  --}}
         </div>
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}

@@ -27,8 +27,14 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
-
 Route::resource('posts', 'PostsController');
+Route::post('/posts/store', 'PostsController@store');
+Route::get('/photos/create/{id}', 'PhotosController@create');
+Route::post('/photos/store', 'PhotosController@store');
+
+Route::get('/photos/show/{id}', 'PhotosController@show');
+Route::delete('/photos/{id}', 'PhotosController@destroy');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -36,3 +42,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+

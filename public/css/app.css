@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+ /* @import url(https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css); */
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -10406,6 +10408,7 @@ a.text-dark:focus {
   tr,
   img {
     page-break-inside: avoid;
+    /* margin: 50px; */
   }
 
   p,
