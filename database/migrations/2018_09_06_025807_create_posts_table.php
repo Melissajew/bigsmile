@@ -18,9 +18,12 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->mediumText('body');
             $table->timestamps();
+            // $table->string('password');
             //Combine cover image to post. update DB?
+            //Yes, updated DB. apply same method to password.
             $table->string('cover_image');
         });
+
     }
 
     /**

@@ -11,6 +11,9 @@
                     </div>
                     <div class="col-md-8 col-sm-8">
                         <h3><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></h3>
+
+                        {{-- Link to log in page --}}
+                        {{-- <h3><a href="{{route('posts.login', $post->id)}}">{{$post->title}}</a></h3> --}}
                         <small>Created on {{$post->created_at}} by {{$post->user->name}}</small>
                     </div>
                 </div>                

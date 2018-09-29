@@ -26,11 +26,6 @@ class PostsController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
-        // return Post::where('title', 'Post Two')->get();
-        // $posts = DB::select('SELECT * FROM posts');
-        //$posts = Post::orderBy('title', 'desc')->take(1)->get();
-        //$posts = Post::orderBy('title', 'desc')->get();
 
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('posts.index')->with('posts', $posts);
@@ -39,7 +34,6 @@ class PostsController extends Controller
         return view ('posts.index')->with('posts', $posts);
     }
 
- 
 
 
     /**
@@ -63,7 +57,9 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
-            'cover_image' => 'image|max:1999'
+            'cover_image' => 'image|max:1999',
+            'password' => 'required|string|min:6|confirmed',
+            
         ]);
 
         // Handle File Upload
@@ -88,6 +84,8 @@ class PostsController extends Controller
         $post->body =$request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $fileNameToStore;
+        $post->password = $request->input('password');
+        
 
         $post->save();
 
@@ -100,9 +98,21 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
-    {
-        // $post = Post::find($id);
+    {   
+         // check for correct password. Unsure if word password is correct.
+        //  if(auth()->password !==$post->password){
+        //     return redirect('/posts')->with('error', "unauthorized page");
+        // }
+        // return view('/Hello/public/storage/photos/{{$photo->post_id}}')->with('post', $post);
+   
+        // WE ARE CURRENTLY HERE!!!!!!!!!!!!1   
+         
+        // if (Hash::check('password', $hashedPassword)) {
+       
+    
+        // SHOWS ALBUM WITHOUT NEED FOR PASSWORD. CANNOT REDECLARE SHOW
         $post = Post::with('Photos')->find($id);
         return view('posts.show')->with('post', $post);
     }
@@ -135,7 +145,8 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'password' => 'required'
         ]);
 
         // Handle File Upload
@@ -181,4 +192,6 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/posts')->with('success', 'Post Removed');
     }
+
 }
+

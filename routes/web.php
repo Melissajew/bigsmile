@@ -35,6 +35,14 @@ Route::post('/photos/store', 'PhotosController@store');
 Route::get('/photos/show/{id}', 'PhotosController@show');
 Route::delete('/photos/{id}', 'PhotosController@destroy');
 
+
+Route::get('/posts/login','PostsController@login');
+
+
+// Two Factor Authentication
+// Route::get('2fa', 'TwoFactorController@showTwoFactorForm');
+// Route::post('2fa', 'TwoFactorController@verifyTwoFactor');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

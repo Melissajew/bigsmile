@@ -41,6 +41,14 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        //Two factor authentication. I want it to be accessible to password holder, not jsut admin.
+
+        // 'admin' => [
+        //     \App\Http\Middleware\TwoFactorVerify::class,
+        // ],
+
+
     ];
 
     /**
@@ -59,5 +67,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        
+        //If you plan on using the two factor middleware outside of the admin group add it to the route middleware array as well.
+        // 'two_factor' => \App\Http\Middleware\TwoFactorVerify::class,
     ];
 }

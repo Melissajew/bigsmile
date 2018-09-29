@@ -14,8 +14,16 @@
         </div>
         <div class="form-group">
             {{Form::file('cover_image')}}
-            {{-- <input type="file" name="file" multiple>  --}}
         </div>
+
+        {{-- Insert password here --}}
+
+        <div class="form-group">
+            {{Form::label('password', 'Password')}}
+            {{Form::text('password', '', ['class' => 'form-control', 'placeholder' => 'Create Password'])}}
+            {{ Form::hidden('invisible', 'secret', array('post_id' => 'invisible_id')) }}
+        </div>
+        
         {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection
